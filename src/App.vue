@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1>Carrinho</h1>
+    {{ carting }}
     <hr>
     <div class="row">
       <!--Component Son than send 'props' product -->
@@ -27,10 +28,11 @@ export default {
       // to activate a action using 'dispatch()', that call the function 'fetchData' in 'Actions'
       store.dispatch('fetchData');
     });
-    // In the Documentation to call an element Store we have user 'Computed'
+    // In the Documentation to call an element Store we have user 'Computed' for render in Father Component
     const products = computed(() => store.state.products);
+    const carting = computed(() => store.state.carting);
 
-    return { products };
+    return { products, carting };
   }
 };
 </script>

@@ -5,20 +5,28 @@
       <div class="card-body">
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">$ <span>{{ product.precio }}</span></p>
-        <button class="btn btn-dark">Comprar</button>
+        <button class="btn btn-dark" v-on:click="agregar(product)">Comprar</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import { useStore } from 'vuex';
+
+export default { 
   name: 'Card',
   // we using 'props' here and App component
   props: [ 'product' ],
 
-  setup(props) {
-    console.log(props.product.title);
+  setup() {
+    const store = useStore();
+    const agregar = product => {
+      // to activate a action using 'dispatch()', that call the function 'addKarting' in 'Actions'
+      store.dispatch('addCarting', product);
+    };
+
+    return { agregar };
   }
   
 };

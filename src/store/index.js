@@ -2,12 +2,18 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    products: []
+    // list of product
+    products: [],
+    // list of object selected
+    carting: {}
   },
   // using only for changer the State
   mutations: {
-    setProduct(state, preload) {
-      state.products = preload;
+    setProduct(state, payload) {
+      state.products = payload;
+    },
+    setCarting(state, payload) {
+      state.carting[payload.id] = payload;
     }
   },
   // using for call a action (ex: API)in server. But the action does not change the state.
@@ -22,6 +28,17 @@ export default createStore({
       } catch (error) {
         console.log(error);
       }
+    },
+    // add products on karting
+    addCarting({commit, state}, products) {
+      // verify if the 'product' is or not add in the 'carting'. This 'hasOwnProperty' method returns 
+      // a boolean indicating whether the object has the specified property
+      hasOwnProperty.call(state.carting, products.id) 
+        ? products.amount = state.carting[products.id].amount + 1
+        : products.amount = 1;
+      //console.log(products.amount);
+      // pushing to "mutation"
+      commit('setCarting', products);
     }
   },
   modules: {
