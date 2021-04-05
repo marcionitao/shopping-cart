@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <h1>Carrinho</h1>
-    {{ carting }}
+    <!--<pre>{{ carting }}</pre>-->
     <hr>
+     <!--Component Son 'Carting'-->
+    <Carting></Carting>
     <div class="row">
       <!--Component Son than send 'props' product -->
       <Card v-for="product of products" v-bind:key="product.id" v-bind:product="product"></Card>
@@ -14,11 +16,13 @@
 import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import Card from '@/components/Card';
+import Carting from '@/components/Carting';
 
 export default {
   name: 'App',
   components: {
-    Card
+    Card,
+    Carting
   },
   setup() {
     // to can use all datas from Store
@@ -30,9 +34,9 @@ export default {
     });
     // In the Documentation to call an element Store we have user 'Computed' for render in Father Component
     const products = computed(() => store.state.products);
-    const carting = computed(() => store.state.carting);
+    // const carting = computed(() => store.state.carting);
 
-    return { products, carting };
+    return { products };
   }
 };
 </script>

@@ -41,6 +41,14 @@ export default createStore({
       commit('setCarting', products);
     }
   },
+  // take some data in state and return the data chenged
+  // is good for add filters or calculators
+  getters: {
+    totalAmount(state) {
+      // return the data objects from the cart and apply REDUCE
+      return Object.values(state.carting).reduce((acc, {amount}) => acc + amount, 0);
+    }
+  },
   modules: {
   }
 });
