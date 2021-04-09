@@ -14,6 +14,20 @@ export default createStore({
     },
     setCarting(state, payload) {
       state.carting[payload.id] = payload;
+    },
+    clearCarting(state) {
+      state.carting = {};
+    },
+    increment(state, payload) {
+      // 'payload' get item.id
+      state.carting[payload].amount =  state.carting[payload].amount + 1;
+    },
+    decrement(state, payload) {
+      // 'payload' get item.id
+      state.carting[payload].amount =  state.carting[payload].amount - 1;
+      if (state.carting[payload].amount === 0) {
+        delete state.carting[payload];
+      }
     }
   },
   // using for call a action (ex: API)in server. But the action does not change the state.
@@ -47,6 +61,10 @@ export default createStore({
     totalAmount(state) {
       // return the data objects from the cart and apply REDUCE
       return Object.values(state.carting).reduce((acc, {amount}) => acc + amount, 0);
+    },
+    totalPrice(state) {
+      // return the data objects from the cart and apply REDUCE
+      return Object.values(state.carting).reduce((acc, {amount, precio}) => acc + amount * precio, 0);
     }
   },
   modules: {

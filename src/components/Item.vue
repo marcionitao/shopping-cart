@@ -4,10 +4,10 @@
     <td>{{ item.title }}</td>
     <td>{{ item.amount }}</td>
     <td>
-        <button class="btn btn-info btn-sm">
+        <button class="btn btn-info btn-sm" @click="increment(item.id)">
             +
         </button>
-        <button class="btn btn-danger btn-sm">
+        <button class="btn btn-danger btn-sm" @click="decrement(item.id)">
             -
         </button>
     </td>
@@ -16,12 +16,17 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
+
 export default {
   props: ['item'],
   setup () {
-    
+    const store = useStore();
+    // run methods from Store
+    const increment = (id) => {store.commit('increment', id);};
+    const decrement = (id) => {store.commit('decrement', id);};
 
-    return {};
+    return { increment, decrement };
   }
 };
 </script>
