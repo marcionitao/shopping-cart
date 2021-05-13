@@ -5,7 +5,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">$ <span>{{ product.precio }}</span></p>
-        <button class="btn btn-dark" v-on:click="agregar(product)">Comprar</button>
+        <button class="btn btn-dark" v-on:click="agregar(product)">Buy</button>
       </div>
     </div>
   </div>

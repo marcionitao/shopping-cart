@@ -3,7 +3,7 @@
     <td>{{ totalAmount }}</td>
     <td>
         <button class="btn btn-danger btn-sm" id="vaciar-carrito" @click="clear">
-            vaciar todo
+            empty everything
         </button>
     </td>
     <td class="font-weight-bold">$ <span> {{ totalPrice }}</span></td>

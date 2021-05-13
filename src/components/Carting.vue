@@ -19,7 +19,7 @@
           <tr id="footer-carrito">
             <!--if Object Items data is empty, write 'Carrito vacío - Buy'-->
             <!--Component Son 'Footer'-->
-            <th scope="row" colspan="5" v-if="Object.keys(items).length === 0">Carrito vacío - Buy</th>
+            <th scope="row" colspan="5" v-if="Object.keys(items).length === 0">Empty cart- Buy</th>
             <Footer v-else></Footer>
           </tr>
         </tfoot>
